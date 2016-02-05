@@ -9,5 +9,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "jquery": "^2.2.0",
+    "jsdom": "^8.0.2"
   }
 }
