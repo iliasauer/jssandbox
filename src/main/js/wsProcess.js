@@ -1,12 +1,13 @@
 var $ = require('jquery')(require('jsdom').jsdom().defaultView);
-var extData = require('./data');
-var scenarioName = extData.scenarios;
-var markers = extData.markers;
-var oldJson = extData.oldJson;
-var newJson = extData.newJson;
+const extData = require('./data');
+const scenarioName = extData.scenarios;
+const markers = extData.markers;
+const oldJson = extData.oldJson;
+const newJson = extData.newJson;
+var charts = require('./charts/main.js');
 var chartsArray = [];
 
-kirillFunc = function() {
+wsProcess = function() {
     if ($.isArray(oldJson)) {
         var logEventsByRunId = {};
         oldJson.forEach(function (element) {
@@ -94,9 +95,8 @@ processJsonLogEvents = function(chartsArray, json) {
             if (!isFound) {
                 switch(json.contextMap["scenario.name"]) {
                     case scenarioName.single:
-                        //chartBase.charts(chartsArray).single(json);
                         console.log("now chartsArray is passed to charts() as a single mode chart");
-                        console.log(chartsArray)
+                        charts(chartsArray).single(json);
                         break;
                     case scenarioName.chain:
                         json.threadName = json.threadName.match(common.getThreadNamePattern())[0];
@@ -112,4 +112,4 @@ processJsonLogEvents = function(chartsArray, json) {
     }
 }
 
-kirillFunc();
+wsProcess();

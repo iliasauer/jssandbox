@@ -1,16 +1,16 @@
-module.exports.scenarios = {
+exports.scenarios = {
     single: "single",
     chain: "chain",
     rampup: "rampup"
 };
-module.exports.markers = {
+exports.markers = {
     ERR: "err",
     MSG: "msg",
     PERF_SUM: "perfSum",
     PERF_AVG: "perfAvg"
 };
 
-module.exports.oldJson = {
+exports.oldJson = {
     "loggerFqcn": "org.apache.logging.log4j.spi.AbstractLogger",
     "marker": {"name": "perfAvg", "parents": null},
     "level": {
@@ -75,7 +75,7 @@ module.exports.oldJson = {
     "thrown": null,
     "nanoTime": 0
 };
-module.exports.newJson = {
+exports.newJson = {
     "name": "chrtpckg",
     "runId": "2016.02.03.22.05.24.588",
     "loadJobName": "0-S3-Create-1x1",
@@ -89,4 +89,34 @@ module.exports.newJson = {
     "tpLastChart": [{"x": 0.0, "y": 0.0}, null],
     "bwAvgChart": [{"x": 0.0, "y": 0.0}, null],
     "bwLast": [{"x": 0.0, "y": 0.0}, null]
+};
+
+exports.avg = {
+    id: "avg",
+    text: "total average"
+};
+exports.last = {
+    id: "last",
+    text: "last 10 sec"
+};
+exports.min = {
+    id: "min",
+    text: "min"
+};
+exports.max = {
+    id: "max",
+    text: "max"
+};
+
+exports.cfgConstants = {
+    runId: "run.id",
+    runMetricsPeriodSec: "load.metricsPeriodSec",
+    runScenarioName: "scenario.name"
+};
+
+exports.chartTypes = {
+    TP: "throughput",
+    BW: "bandwidth",
+    LAT: "latency",
+    DUR: "duration"
 };
