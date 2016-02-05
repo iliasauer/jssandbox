@@ -1,0 +1,13 @@
+{
+  "name": "main",
+  "version": "0.0.1",
+  "description": "app for mongoose ui tests",
+  "license": "GPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://kislii@asdstash.isus.emc.com/scm/vc/vipr-mongoose.git"
+  },
+  "devDependencies": {},
+  "dependencies": {
+  }
+}
