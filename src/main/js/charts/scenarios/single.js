@@ -1,5 +1,6 @@
 const extData = require('../../data');
 const cfgConstants = extData.cfgConstants;
+const threadNamePattern = extData.threadNamePattern;
 
 exports.clearArrays = function(array) {
     array.forEach(function(d) {
@@ -51,6 +52,8 @@ exports.drawDurationCharts = function(data, json, sec) {
     };
 };
 
-drawChart = function() {
+drawChart = function(data, json) {
+    var runMetricsPeriodSec = json.contextMap[cfgConstants.runMetricsPeriodSec];
+    json.threadName = json.threadName.match(threadNamePattern)[0];
     console.log("d3 works right here (SVG creation)");
 };

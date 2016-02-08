@@ -9,6 +9,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "d3": "^3.5.14",
     "jquery": "^2.2.0",
     "jsdom": "^8.0.2"
   }

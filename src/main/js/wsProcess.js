@@ -84,11 +84,11 @@ processJsonLogEvents = function (chartsArray, json) {
             console.log("now messages are appended to table");
             // todo start of handling to change
             var isFound = false;
-            chartsArray.forEach(function (each) {
-                if (each["run.id"] === runId) {
+            chartsArray.forEach(function (chartObj) {
+                if (chartObj["run.id"] === runId) {
                     isFound = true;
-                    each.charts.forEach(function (c) {
-                        c.update(json);
+                    chartObj.charts.forEach(function (chart) {
+                        chart.update(json);
                     });
                 }
             });
@@ -113,4 +113,6 @@ processJsonLogEvents = function (chartsArray, json) {
 };
 
 //wsProcess();
+processJsonLogEvents(chartsArray, oldJson);
+processJsonLogEvents(chartsArray, oldJson);
 processJsonLogEvents(chartsArray, oldJson);

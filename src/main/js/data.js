@@ -120,3 +120,5 @@ exports.chartTypes = {
     LAT: "latency",
     DUR: "duration"
 };
+
+exports.threadNamePattern = /([\d]+)-([A-Za-z0-9]+)-([CreateRdDlUpAn]+)[\d]*-([\d]*)x?([\d]*)x?([\d]*)/gi;
