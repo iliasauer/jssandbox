@@ -1,5 +1,6 @@
 const extData = require('../../data');
 const cfgConstants = extData.cfgConstants;
+const chartTypes = extData.chartTypes;
 const threadNamePattern = extData.threadNamePattern;
 
 exports.clearArrays = function(array) {

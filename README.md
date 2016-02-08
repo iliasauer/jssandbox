@@ -7,6 +7,7 @@ Before run scripts run "npm install" in terminal for dependencies' downloading
 ## Current tasks
 
 - [x] Посмотреть, как работает функция $.extend() ($ - jQuery).
+- [ ] Решить проблему с замыканием в single.js.
 - [ ] Посмотреть логику для одиночного json'а.
 - [ ] Выяснить разницу для single, chain и rampup.
 - [ ] Посмотреть логику для массива json'ов.
