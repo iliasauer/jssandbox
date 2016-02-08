@@ -37,22 +37,22 @@ processJsonLogEvents = function (chartsArray, json) {
         rampupConnCounts = json.contextMap["scenario.type.rampup.connCounts"],
         loadRampupSizes = json.contextMap["scenario.type.rampup.sizes"];
 
-    var entry = runId.split(".").join("_");
+    var entry = runId.replace(/\./g, "_");
 
-    if (!json.hasOwnProperty("marker") || !json.loggerName) {
+    if (!(json.marker && json.loggerName)) {
         return;
     }
     if (json.marker === null)
         return;
 
-    var isContains = false;
-    chartsArray.forEach(function (d) {
-        if (d["run.id"] == runId) {
-            isContains = true;
+    var isContained = false;
+    chartsArray.forEach(function (each) {
+        if (each["run.id"] == runId) {
+            isContained = true;
         }
     });
 
-    if (!isContains) {
+    if (!isContained) {
         if (json.contextMap["scenario.name"] == scenarioName.rampup) {
             chartBase.charts(chartsArray).rampup(
                 runId, scenarioChainLoad, rampupConnCounts, loadRampupSizes
@@ -84,10 +84,10 @@ processJsonLogEvents = function (chartsArray, json) {
             console.log("now messages are appended to table");
             // todo start of handling to change
             var isFound = false;
-            chartsArray.forEach(function (d) {
-                if (d["run.id"] === runId) {
+            chartsArray.forEach(function (each) {
+                if (each["run.id"] === runId) {
                     isFound = true;
-                    d.charts.forEach(function (c) {
+                    each.charts.forEach(function (c) {
                         c.update(json);
                     });
                 }
