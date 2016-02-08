@@ -7,7 +7,7 @@ const newJson = extData.newJson;
 var charts = require('./charts/main.js');
 var chartsArray = [];
 
-wsProcess = function() {
+wsProcess = function () {
     if ($.isArray(oldJson)) {
         var logEventsByRunId = {};
         oldJson.forEach(function (element) {
@@ -30,7 +30,7 @@ wsProcess = function() {
     }
 };
 
-processJsonLogEvents = function(chartsArray, json) {
+processJsonLogEvents = function (chartsArray, json) {
     var runId = json.contextMap["run.id"],
         runMetricsPeriodSec = json.contextMap["load.metricsPeriodSec"],
         scenarioChainLoad = json.contextMap["scenario.type.chain.load"],
@@ -46,14 +46,14 @@ processJsonLogEvents = function(chartsArray, json) {
         return;
 
     var isContains = false;
-    chartsArray.forEach(function(d) {
-        if(d["run.id"] == runId) {
+    chartsArray.forEach(function (d) {
+        if (d["run.id"] == runId) {
             isContains = true;
         }
     });
 
-    if(!isContains) {
-        if(json.contextMap["scenario.name"] == scenarioName.rampup) {
+    if (!isContains) {
+        if (json.contextMap["scenario.name"] == scenarioName.rampup) {
             chartBase.charts(chartsArray).rampup(
                 runId, scenarioChainLoad, rampupConnCounts, loadRampupSizes
             );
@@ -70,9 +70,9 @@ processJsonLogEvents = function(chartsArray, json) {
         case markers.PERF_SUM:
             appendMessageToTable(entry, logFiles.PERF_SUM, countOfRecords, json);
             if (json.contextMap["scenario.name"] === scenarioName.rampup) {
-                chartsArray.forEach(function(d) {
+                chartsArray.forEach(function (d) {
                     if (d["run.id"] === runId) {
-                        d.charts.forEach(function(c) {
+                        d.charts.forEach(function (c) {
                             c.update(json);
                         });
                     }
@@ -84,16 +84,16 @@ processJsonLogEvents = function(chartsArray, json) {
             console.log("now messages are appended to table");
             // todo start of handling to change
             var isFound = false;
-            chartsArray.forEach(function(d) {
+            chartsArray.forEach(function (d) {
                 if (d["run.id"] === runId) {
                     isFound = true;
-                    d.charts.forEach(function(c) {
+                    d.charts.forEach(function (c) {
                         c.update(json);
                     });
                 }
             });
             if (!isFound) {
-                switch(json.contextMap["scenario.name"]) {
+                switch (json.contextMap["scenario.name"]) {
                     case scenarioName.single:
                         console.log("now chartsArray is passed to charts() as a single mode chart");
                         charts(chartsArray).single(json);
@@ -110,6 +110,7 @@ processJsonLogEvents = function(chartsArray, json) {
             // todo finish of handling to change
             break;
     }
-}
+};
 
-wsProcess();
+//wsProcess();
+processJsonLogEvents(chartsArray, oldJson);
