@@ -5,17 +5,17 @@ const last = extData.last;
 const avg = extData.avg;
 const min = extData.min;
 const max = extData.max;
-var getScenarioChartObject = require('./util/common.js');
-var single = require('./scenarios/single.js');
+var common = require('./util/common');
+var single = require('./scenarios/single');
 var chartsArray;
 
 charts = function(array) {
     chartsArray = array;
     //
     return {
-        single: drawSingleCharts,
+        single: drawSingleCharts
     }
-}
+};
 
 module.exports = charts;
 
@@ -84,17 +84,17 @@ drawSingleCharts = function(jsonValue) {
         var durSec = single.initDataArray(
             duration, jsonValue, constants.getChartTypes().DUR, runMetricsPeriodSec
         );
-        chartsArray.push(getScenarioChartObject(runId, runScenarioName,
+        chartsArray.push(common.getScenarioChartObject(runId, runScenarioName,
             [single.drawThroughputCharts(throughput, jsonValue[0], tpSec),
                 single.drawBandwidthCharts(bandwidth, jsonValue[0], bwSec),
                 single.drawLatencyCharts(latency, jsonValue[0], latSec),
                 single.drawDurationCharts(duration, jsonValue[0], durSec)]));
     } else {
         //
-        chartsArray.push(getScenarioChartObject(runId, runScenarioName,
+        chartsArray.push(common.getScenarioChartObject(runId, runScenarioName,
             [single.drawThroughputCharts(throughput, jsonValue),
                 single.drawBandwidthCharts(bandwidth, jsonValue),
                 single.drawLatencyCharts(latency, jsonValue),
                 single.drawDurationCharts(duration, jsonValue)]));
     }
-}
+};

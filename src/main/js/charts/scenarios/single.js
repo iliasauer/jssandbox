@@ -2,6 +2,7 @@ const extData = require('../../data');
 const cfgConstants = extData.cfgConstants;
 const chartTypes = extData.chartTypes;
 const threadNamePattern = extData.threadNamePattern;
+var common = require('../util/common');
 
 exports.clearArrays = function(array) {
     array.forEach(function(d) {
@@ -57,4 +58,8 @@ drawChart = function(data, json) {
     var runMetricsPeriodSec = json.contextMap[cfgConstants.runMetricsPeriodSec];
     json.threadName = json.threadName.match(threadNamePattern)[0];
     console.log("d3 works right here (SVG creation)");
+    return function (chartType, value) {
+        var parsedValue = common.parsePerfAvgLogEvent(chartType, value);
+        console.log("Done! JSON has been parsed.")
+    };
 };
