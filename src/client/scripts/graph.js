@@ -1,40 +1,56 @@
 main = function() {
     const newJson = {
         "name": "chrtpckg",
-        "runId": "2016.02.03.22.05.24.588",
+        "runId": "2016.02.10.14.17.43.659",
         "loadJobName": "0-S3-Create-1x1",
-        "durMinChart": [
-            {"x": 0.0, "y": 0.0},
-            {"x": 10.0, "y": 25686.0},
-            {"x": 20.0, "y": 37789.0},
-            {"x": 30.0, "y": 37789.0},
-            {"x": 40.0, "y": 48961.0},
-            {"x": 50.0, "y": 53478.0},
-            {"x": 60.0, "y": 61548.0},
-            {"x": 70.0, "y": 70588.0},
-            {"x": 80.0, "y": 77154.0},
-            {"x": 90.0, "y": 78995.0},
-            null],
-        "durMaxChart":[
-            {"x": 0.0, "y": 0.0},
-            {"x": 10.0, "y": 15686.0},
-            {"x": 20.0, "y": 27789.0},
-            {"x": 30.0, "y": 27789.0},
-            {"x": 40.0, "y": 38961.0},
-            {"x": 50.0, "y": 43478.0},
-            {"x": 60.0, "y": 51548.0},
-            {"x": 70.0, "y": 60588.0},
-            {"x": 80.0, "y": 87154.0},
-            {"x": 90.0, "y": 98995.0},
-            null],
-        "durAvgChart": [{"x": 0.0, "y": 0.0}, null],
-        "latMinChart": [{"x": 0.0, "y": 0.0}, null],
-        "latMaxChart": [{"x": 0.0, "y": 0.0}, null],
-        "latAvgChart": [{"x": 0.0, "y": 0.0}, null],
-        "tpAvgChart": [{"x": 0.0, "y": 0.0}, null],
-        "tpLastChart": [{"x": 0.0, "y": 0.0}, null],
-        "bwAvgChart": [{"x": 0.0, "y": 0.0}, null],
-        "bwLast": [{"x": 0.0, "y": 0.0}, null]
+        "duration": [
+            {
+                "name": "avg",
+                "values": [{"x": 0.0, "y": 0.0}, null]
+            },
+            {
+                "name": "min",
+                "values": [
+                    {"x": 0.0, "y": 0.0},
+                    {"x": 10.0, "y": 25686.0},
+                    {"x": 20.0, "y": 37789.0},
+                    {"x": 30.0, "y": 37789.0},
+                    {"x": 40.0, "y": 48961.0},
+                    {"x": 50.0, "y": 53478.0},
+                    {"x": 60.0, "y": 61548.0},
+                    {"x": 70.0, "y": 70588.0},
+                    {"x": 80.0, "y": 77154.0},
+                    {"x": 90.0, "y": 78995.0},
+                    null]
+            },
+            {
+                "name": "max",
+                "values": [
+                    {"x": 0.0, "y": 0.0},
+                    {"x": 10.0, "y": 15686.0},
+                    {"x": 20.0, "y": 27789.0},
+                    {"x": 30.0, "y": 27789.0},
+                    {"x": 40.0, "y": 38961.0},
+                    {"x": 50.0, "y": 43478.0},
+                    {"x": 60.0, "y": 51548.0},
+                    {"x": 70.0, "y": 60588.0},
+                    {"x": 80.0, "y": 87154.0},
+                    {"x": 90.0, "y": 98995.0},
+                    null]
+            }
+        ],
+        "latency": [{"name": "avg", "values": [{"x": 0.0, "y": 0.0}, null]}, {
+            "name": "min",
+            "values": [{"x": 0.0, "y": 0.0}, null]
+        }, {"name": "max", "values": [{"x": 0.0, "y": 0.0}, null]}],
+        "thoughput": [{"name": "avg", "values": [{"x": 0.0, "y": 0.0}, null]}, {
+            "name": "last",
+            "values": [{"x": 0.0, "y": 0.0}, null]
+        }],
+        "bandwidth": [{"name": "avg", "values": [{"x": 0.0, "y": 0.0}, null]}, {
+            "name": "last",
+            "values": [{"x": 0.0, "y": 0.0}, null]
+        }]
     };
 
     const MARGIN_DEF_VAL = 80;
@@ -123,7 +139,9 @@ main = function() {
     var makeJsonValid = function(json) {
         for (var key in json) {
             if (Array.isArray(json[key])) {
-                json[key].pop();
+                json[key].forEach(function(element) {
+                    element["values"].pop();
+                })
             }
         }
     };
@@ -131,13 +149,13 @@ main = function() {
     makeJsonValid(newJson);
 
     graph.append("svg:path")
-        .attr("d", lineGenerator(newJson.durMinChart))
+        .attr("d", lineGenerator(newJson.duration[1].values))
         .attr('stroke', 'green')
         .attr('stroke-width', 2)
         .attr('fill', 'none');
 
     graph.append("svg:path")
-        .attr("d", lineGenerator(newJson.durMaxChart))
+        .attr("d", lineGenerator(newJson.duration[2].values))
         .attr('stroke', 'blue')
         .attr('stroke-width', 2)
         .attr('fill', 'none');

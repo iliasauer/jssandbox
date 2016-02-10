@@ -77,18 +77,34 @@ exports.oldJson = {
 };
 exports.newJson = {
     "name": "chrtpckg",
-    "runId": "2016.02.03.22.05.24.588",
+    "runId": "2016.02.10.14.17.43.659",
     "loadJobName": "0-S3-Create-1x1",
-    "durMinChart": [{"x": 0.0, "y": 0.0}, null],
-    "durMaxChart": [{"x": 0.0, "y": 0.0}, null],
-    "durAvgChart": [{"x": 0.0, "y": 0.0}, null],
-    "latMinChart": [{"x": 0.0, "y": 0.0}, null],
-    "latMaxChart": [{"x": 0.0, "y": 0.0}, null],
-    "latAvgChart": [{"x": 0.0, "y": 0.0}, null],
-    "tpAvgChart": [{"x": 0.0, "y": 0.0}, null],
-    "tpLastChart": [{"x": 0.0, "y": 0.0}, null],
-    "bwAvgChart": [{"x": 0.0, "y": 0.0}, null],
-    "bwLast": [{"x": 0.0, "y": 0.0}, null]
+    "duration": [
+        {
+            "name": "avg",
+            "values": [{"x": 0.0, "y": 0.0}, null]
+        },
+        {
+            "name": "min",
+            "values": [{"x": 0.0, "y": 0.0}, null]
+        },
+        {
+            "name": "max",
+            "values": [{"x": 0.0, "y": 0.0}, null]
+        }
+    ],
+    "latency": [{"name": "avg", "values": [{"x": 0.0, "y": 0.0}, null]}, {
+        "name": "min",
+        "values": [{"x": 0.0, "y": 0.0}, null]
+    }, {"name": "max", "values": [{"x": 0.0, "y": 0.0}, null]}],
+    "thoughput": [{"name": "avg", "values": [{"x": 0.0, "y": 0.0}, null]}, {
+        "name": "last",
+        "values": [{"x": 0.0, "y": 0.0}, null]
+    }],
+    "bandwidth": [{"name": "avg", "values": [{"x": 0.0, "y": 0.0}, null]}, {
+        "name": "last",
+        "values": [{"x": 0.0, "y": 0.0}, null]
+    }]
 };
 
 exports.avg = {
