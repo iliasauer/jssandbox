@@ -1,0 +1,8 @@
+.bar {
+    /*float: left;*/
+    display: inline-block;
+    width: 30px;
+    margin-right: 20px;
+    background-color: #F4F5F7;
+    border: 1px solid #C5C5C5;
+}

@@ -100,6 +100,8 @@ main = function() {
         return yScale(data["y"])
     };
 
+
+    // returns a function, which returns an array of segments
     var lineGenerator = d3.svg.line()
         .x(getX)
         .y(getY);

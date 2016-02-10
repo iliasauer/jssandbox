@@ -7,6 +7,7 @@ Before run scripts run "npm install" in terminal for dependencies' downloading
 ## Current tasks
 
 - [x] Посмотреть, как работает функция $.extend() ($ - jQuery).
+- [ ] Понять, как провести границу между графиками и таблицей сообщений.
 - [ ] Понять, каким образом осуществить переход от добавления одной точки к добавлению всего графика.
   - Есть ли разница между текущей реализацией и рисованием сразу всего графика?
   - Перерисовывается ли график каждый раз?
@@ -22,6 +23,7 @@ Before run scripts run "npm install" in terminal for dependencies' downloading
 - [x] Выяснить, в каком виде заполняется chartArray.
 - [x] Выяснить, что содержит поле charts chartArray.
 - [ ] Выяснить, как действует метод update для элементов charts в chartArray.
+- [x] Вспомнить enter(), exit(), update() в d3.
 
 ## Current notes
 
@@ -42,7 +44,18 @@ Before run scripts run "npm install" in terminal for dependencies' downloading
 
 Previous analysis is in git history.
 
+single,js
+line 219 - добавление точек для графика
 
+У Кирилла:
+  - В качестве значения аргумента "d" устанавливается анонимная функция function(d),
+  которая возвращает lineGenerator(d.values).
+
+В примере d3:
+  - Для получения значения аттрибута "d" вызывается lineGenerator() с аргументом в виде объекта с данными,
+  который возвращает функцию line(), которая возвращает некий массив сегментов.
+  В итоге в качестве значения аттрибута "d" устанавливается именно функция line, а НЕ массив,
+  то есть НЕ результат вызова функции.
 
 ## Code changes
 
