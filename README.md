@@ -38,8 +38,8 @@ Before run scripts run "npm install" in terminal for dependencies' downloading
 
 В решении проблемы перехода к добавлению целого графика обратить внимание на функцию update().
 
-Предположительно ключ к решению в main.js single.initDataArray,
-т.к. там обрабатывается сразу массив точек
+Предположительно ключ к решению в main.js single.initDataArray (ссылается на simplifyChart()),
+т.к. там обрабатывается сразу массив точек.
 
 Очень долго запускается debugging для node в webstorm ide.
 
